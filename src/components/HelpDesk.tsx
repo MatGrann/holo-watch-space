@@ -67,88 +67,88 @@ export function HelpDesk() {
     }
   ];
 
-  return (
-    <>
-      {/* Help Button */}
-      <Button
-        onClick={() => setIsOpen(true)}
-        className={cn(
-          "fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg",
-          "bg-info-general hover:bg-info-general/90 text-info-general-foreground",
-          "transition-all duration-300 hover:scale-110"
-        )}
-        size="lg"
-      >
-        <HelpCircle className="h-6 w-6" />
-      </Button>
-
-      {/* Help Modal */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsOpen(false)}
-          />
-          
-          {/* Modal Content */}
-          <Card className="relative w-full max-w-md mx-4 fade-in">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center gap-2">
-                  <HelpCircle className="h-5 w-5 text-info-general" />
-                  Central de Ajuda
-                </CardTitle>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-            </CardHeader>
-            
-            <CardContent className="space-y-2">
-              {helpOptions.map((option, index) => {
-                const Icon = option.icon;
-                return (
-                  <div key={option.id}>
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start p-4 h-auto hover:bg-muted"
-                      onClick={option.action}
-                    >
-                      <div className="flex items-center gap-3 w-full">
-                        <div className="flex-shrink-0">
-                          <Icon className="h-5 w-5 text-info-general" />
-                        </div>
-                        <div className="flex-1 text-left">
-                          <div className="font-medium text-sm">{option.title}</div>
-                          <div className="text-xs text-muted-foreground mt-1">
-                            {option.description}
-                          </div>
-                        </div>
-                        <ChevronRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                      </div>
-                    </Button>
-                    {index < helpOptions.length - 1 && <Separator className="my-1" />}
-                  </div>
-                );
-              })}
-              
-              <div className="pt-4 text-center">
-                <div className="text-xs text-muted-foreground">
-                  Sistema de Monitoramento v2.1.0
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  Precisa de ajuda? Estamos aqui para apoiar você!
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+return (
+  <>
+    {/* Help Button */}
+    <Button
+      onClick={() => setIsOpen(true)}
+      className={cn(
+        "fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg",
+        "bg-green-600 hover:bg-green-700 text-white", // botão principal verde
+        "transition-all duration-300 hover:scale-110"
       )}
-    </>
-  );
-}
+      size="lg"
+    >
+      <HelpCircle className="h-6 w-6" />
+    </Button>
+
+    {/* Help Modal */}
+    {isOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+        
+        {/* Modal Content */}
+        <Card className="relative w-full max-w-md mx-4 fade-in">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2 text-green-700">
+                <HelpCircle className="h-5 w-5 text-green-600" />
+                Central de Ajuda
+              </CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-green-600 hover:bg-green-100"
+                onClick={() => setIsOpen(false)}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+          </CardHeader>
+          
+          <CardContent className="space-y-2">
+            {helpOptions.map((option, index) => {
+              const Icon = option.icon;
+              return (
+                <div key={option.id}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start p-4 h-auto hover:bg-green-50"
+                    onClick={option.action}
+                  >
+                    <div className="flex items-center gap-3 w-full">
+                      <div className="flex-shrink-0">
+                        <Icon className="h-5 w-5 text-green-600" />
+                      </div>
+                      <div className="flex-1 text-left">
+                        <div className="font-medium text-sm text-green-700">{option.title}</div>
+                        <div className="text-xs text-green-600 mt-1">
+                          {option.description}
+                        </div>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    </div>
+                  </Button>
+                  {index < helpOptions.length - 1 && <Separator className="my-1" />}
+                </div>
+              );
+            })}
+            
+            <div className="pt-4 text-center">
+              <div className="text-xs text-green-600">
+                Sistema de Monitoramento v2.1.0
+              </div>
+              <div className="text-xs text-green-500 mt-1">
+                Precisa de ajuda? Estamos aqui para apoiar você!
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )}
+  </>
+); }

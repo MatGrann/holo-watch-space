@@ -6,36 +6,36 @@
 
 @layer base {
   :root {
-    /* Base colors */
-    --background: 248 250 252;
-    --foreground: 213 24% 16%;
+   /* Base colors */
+--background: 0 0% 90%; /* cinza claro, mas mais escuro que antes */
+--foreground: 0 0% 12%; /* cinza quase preto para texto */
 
-    --card: 0 0% 100%;
-    --card-foreground: 213 24% 16%;
+--card: 0 0% 96%; /* cinza médio-claro */
+--card-foreground: 0 0% 15%; /* cinza escuro */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 213 24% 16%;
+--popover: 0 0% 96%;
+--popover-foreground: 0 0% 15%;
 
-    --primary: 215 88% 50%;
-    --primary-foreground: 210 40% 98%;
+--primary: 145 70% 35%; /* verde mais forte */
+--primary-foreground: 0 0% 98%; /* branco quase puro */
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
+--secondary: 0 0% 75%; /* cinza médio */
+--secondary-foreground: 0 0% 15%; /* cinza escuro */
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+--muted: 0 0% 75%; /* cinza médio */
+--muted-foreground: 0 0% 30%; /* cinza médio-escuro */
 
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+--accent: 145 50% 80%; /* verde suave de fundo */
+--accent-foreground: 145 80% 20%; /* verde escuro para contraste */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+--destructive: 145 80% 25%; /* verde bem forte (ao invés de vermelho) */
+--destructive-foreground: 0 0% 98%; /* branco */
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 215 88% 50%;
+--border: 0 0% 60%; /* cinza mais visível */
+--input: 0 0% 60%;
+--ring: 145 70% 35%; /* verde intenso */
 
-    --radius: 0.75rem;
+--radius: 0.75rem;
 
     /* Monitoring System Critical Colors */
     --critical-alarm: 0 84% 55%;

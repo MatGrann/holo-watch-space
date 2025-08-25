@@ -80,10 +80,10 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold tracking-tight">
-                Sistema de Monitoramento
+                SyOS
               </h1>
               <p className="text-muted-foreground">
-                Dashboard de controle e alertas em tempo real
+                Seu controle de cadeia frio
               </p>
             </div>
             
