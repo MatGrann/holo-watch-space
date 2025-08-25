@@ -2,41 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Monitoring System Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors */
+    --background: 248 250 252;
+    --foreground: 213 24% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 213 24% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 213 24% 16%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 215 88% 50%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 215 88% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Monitoring System Critical Colors */
+    --critical-alarm: 0 84% 55%;
+    --critical-alarm-foreground: 0 0% 98%;
+    --critical-alarm-bg: 0 93% 97%;
+
+    --warning-condition: 38 92% 50%;
+    --warning-condition-foreground: 0 0% 98%;
+    --warning-condition-bg: 48 100% 96%;
+
+    --success-normal: 152 76% 36%;
+    --success-normal-foreground: 0 0% 98%;
+    --success-normal-bg: 151 81% 96%;
+
+    --info-general: 215 88% 50%;
+    --info-general-foreground: 0 0% 98%;
+    --info-general-bg: 215 100% 97%;
+
+    --offline-warning: 220 8.9% 46.1%;
+    --offline-warning-foreground: 0 0% 98%;
+    --offline-warning-bg: 220 13% 95%;
+
+    /* Gradients */
+    --gradient-critical: linear-gradient(135deg, hsl(0 84% 55%) 0%, hsl(0 70% 48%) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(38 82% 43%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(152 76% 36%) 0%, hsl(152 66% 29%) 100%);
+    --gradient-info: linear-gradient(135deg, hsl(215 88% 50%) 0%, hsl(215 78% 43%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(215 88% 50%) 0%, hsl(238 88% 60%) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-critical: 0 4px 14px 0 rgb(220 38 38 / 0.2);
+    --shadow-warning: 0 4px 14px 0 rgb(245 158 11 / 0.2);
+    --shadow-success: 0 4px 14px 0 rgb(5 150 105 / 0.2);
+
+    /* Animations */
+    --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +141,113 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Monitoring Cards */
+  .card-critical {
+    @apply bg-gradient-to-br from-critical-alarm-bg to-white border-critical-alarm/20;
+    box-shadow: var(--shadow-critical);
+  }
+
+  .card-warning {
+    @apply bg-gradient-to-br from-warning-condition-bg to-white border-warning-condition/20;
+    box-shadow: var(--shadow-warning);
+  }
+
+  .card-success {
+    @apply bg-gradient-to-br from-success-normal-bg to-white border-success-normal/20;
+    box-shadow: var(--shadow-success);
+  }
+
+  .card-info {
+    @apply bg-gradient-to-br from-info-general-bg to-white border-info-general/20;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Interactive Elements */
+  .sensor-marker {
+    @apply rounded-full p-2 cursor-pointer transition-all duration-200 hover:scale-110;
+  }
+
+  .sensor-critical {
+    @apply bg-critical-alarm text-critical-alarm-foreground;
+    box-shadow: 0 0 20px hsl(var(--critical-alarm) / 0.5);
+  }
+
+  .sensor-warning {
+    @apply bg-warning-condition text-warning-condition-foreground;
+    box-shadow: 0 0 20px hsl(var(--warning-condition) / 0.5);
+  }
+
+  .sensor-normal {
+    @apply bg-success-normal text-success-normal-foreground;
+    box-shadow: 0 0 20px hsl(var(--success-normal) / 0.5);
+  }
+
+  /* Animations */
+  .pulse-critical {
+    animation: pulse-critical 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .pulse-warning {
+    animation: pulse-warning 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .slide-up {
+    animation: slide-up 0.4s ease-out;
+  }
+}
+
+@keyframes pulse-critical {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px hsl(var(--critical-alarm) / 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 30px hsl(var(--critical-alarm) / 0.8);
+  }
+}
+
+@keyframes pulse-warning {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px hsl(var(--warning-condition) / 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 30px hsl(var(--warning-condition) / 0.8);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
